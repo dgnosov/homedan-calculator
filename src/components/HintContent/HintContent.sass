@@ -1,0 +1,24 @@
+@import "src/ThemeColors"
+
+.calculator-hint__content
+  top: 40px
+  left: 12px
+  padding: 14px 10px
+  min-width: 234px
+  font-weight: 400
+  line-height: 24px
+  position: absolute
+  background: $hint_background
+  font-family: Gilroy-Regular
+  color: $hint_color
+  z-index: 2
+  &:after
+    top: -16px
+    left: 0
+    content: ''
+    display: block
+    position: absolute
+    width: 20px
+    height: 20px
+    background: $hint_background
+    clip-path: polygon(0% 0, 100% 100%, 0 100%)

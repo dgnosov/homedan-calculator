@@ -1,0 +1,66 @@
+@import "src/ThemeColors"
+
+.calculator-ndfl__wrapper
+  margin: 0 0 0 26px
+  padding: 10px 0 20px 0
+  display: flex
+  align-items: center
+
+.calculator-ndfl-label
+  font-size: 14px
+  font-weight: 400
+  font-family: Gilroy-Bold
+  color: $color_ndfl_disabled
+
+.calculator-enable-ndfl
+  color: $color_ndfl_active
+
+.calculator-ndfl__label
+  margin: 0 10px
+  position: relative
+  display: inline-block
+  width: 40px
+  height: 22px
+
+.calculator-ndfl__label
+  input
+    display: none
+
+.calculator-ndfl__slider
+  position: absolute
+  cursor: pointer
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: $ndfl_toggler_background_disabled
+  -webkit-transition: .4s
+  transition: .4s
+
+.calculator-ndfl__slider:before
+  position: absolute
+  content: ""
+  height: 18px
+  width: 18px
+  left: 3px
+  bottom: 2px
+  background-color: white
+  -webkit-transition: .4s
+  transition: .4s
+
+input:checked + .calculator-ndfl__slider
+  background-color: $ndfl_toggler_background_active
+
+input:focus + .calculator-ndfl__slider
+  box-shadow: 0 0 1px $ndfl_toggler_background_active
+
+input:checked + .calculator-ndfl__slider:before
+  -webkit-transform: translateX(16px)
+  -ms-transform: translateX(16px)
+  transform: translateX(16px)
+
+.calculator-ndfl__slider.round
+  border-radius: 16px
+
+.calculator-ndfl__slider.round:before
+  border-radius: 50%
