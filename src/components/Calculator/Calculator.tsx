@@ -14,8 +14,12 @@ const Calculator = () => {
             <Row>
                 <Form
                     onSubmit={() => null}
-                    initialValues={{ calculator_radio_btn: CalculatorSettings.calculatorInputs[0].id, toggler_ndfl: true }}
+                    initialValues={{
+                        calculator_radio_btn: CalculatorSettings.calculatorInputs[0].id,
+                        toggler_ndfl: true }}
                     render={({values}) =>{
+
+                        console.log(values)
                         return <form>
                             <Row>
                                 <Col>
@@ -38,7 +42,7 @@ const Calculator = () => {
                                             />
                                         </Col>
                                     </Row>
-                                    <Row><Col><CalculatorInput /></Col></Row>
+                                    <Row><Col><CalculatorInput activeTab={values.calculator_radio_btn}/></Col></Row>
                                 </>}
                             {
                                 values?.calculator_radio_btn === CalculatorSettings.calculatorInputs[0].id &&

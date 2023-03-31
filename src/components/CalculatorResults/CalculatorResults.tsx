@@ -3,20 +3,27 @@ import './CalculatorResults.sass'
 import CalculatorSettings from  '../../Settings/CalculatorSettings'
 import {useEffect, useState} from "react";
 
-interface ResultsProps {
+interface IResultsProps {
     toggler_ndfl: boolean,
     salary: number
 }
 
-const CalculatorResults = ({toggler_ndfl, salary}: ResultsProps) => {
+interface ICalculatorResults {
+    salary: number,
+    calculate_ndfl: number,
+    calculate_total: number
+}
 
-    const [calculateResults, setCalculateResults] = useState(null)
+
+const CalculatorResults = ({toggler_ndfl, salary}: IResultsProps) => {
+
+    const [calculateResults, setCalculateResults] = useState<ICalculatorResults>(null)
     const mask = /(\d)(?=(\d\d\d)+([^\d]|$))/g
     const toReplace = "$1 "
 
     useEffect(()=>{
 
-        const salaryValue = salary
+        const salaryValue = Number(salary.toString().replace(/\s/g, ''))
         const ndfl = (salaryValue * CalculatorSettings.calculatorNDFL) / 100
         const calculate_total = ndfl + Number(salaryValue)
 

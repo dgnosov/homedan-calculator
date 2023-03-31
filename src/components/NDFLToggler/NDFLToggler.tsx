@@ -3,11 +3,11 @@ import './NDFLToggler.sass'
 import {Field} from "react-final-form";
 import CalculatorSettings from "../../Settings/CalculatorSettings";
 
-interface ValuesProps {
+interface IValuesProps {
     toggler_ndfl:  boolean
 }
 
-const NDFLToggler = ({toggler_ndfl}: ValuesProps) => {
+const NDFLToggler = ({toggler_ndfl}: IValuesProps) => {
     return (
         <div className={"calculator-ndfl__wrapper"}>
             <span className={!toggler_ndfl ? "calculator-ndfl-label calculator-enable-ndfl" : "calculator-ndfl-label"}>{CalculatorSettings.calculatorNDFLBtnText.text1}</span>

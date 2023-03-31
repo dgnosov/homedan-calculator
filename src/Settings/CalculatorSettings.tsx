@@ -1,10 +1,10 @@
 const CalculatorSettings = {
     calculatorTitle: "Сумма",
     calculatorInputs: [
-        {id: 'r1', name: "Оклад за месяц", hint: false},
-        {id: 'r2', name: "МРОТ", hint: true},
-        {id: 'r3', name: "Оплата за день", hint: false},
-        {id: 'r4', name: "Оплата за час", hint: false},
+        {id: 'r1', name: "Оклад за месяц", short_name: "месяц", hint: false},
+        {id: 'r2', name: "МРОТ", short_name: "", hint: true},
+        {id: 'r3', name: "Оплата за день", short_name: "день", hint: false},
+        {id: 'r4', name: "Оплата за час", short_name: "час", hint: false},
     ],
 
     calculatorResultsTest: {

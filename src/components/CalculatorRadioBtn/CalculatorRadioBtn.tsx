@@ -5,24 +5,25 @@ import {Col, Row} from "react-bootstrap";
 import Hint from "../Hint/Hint";
 import {useState} from "react";
 
-interface RadioProps {
+interface IRadioProps {
     id: string,
     name: string,
     hint: boolean
 }
 
+type EventType = boolean
 
-const CalculatorRadioBtn = ({id, name, hint}: RadioProps) => {
+const CalculatorRadioBtn = ({id, name, hint}: IRadioProps) => {
 
-    const [hover, setHover] = useState(false)
-    const [check, setCheck] = useState(false)
+    const [hover, setHover] = useState<EventType>(false)
+    const [check, setCheck] = useState<EventType>(false)
 
-    const btnHover = (ev) => {
+    const btnHover = (ev: boolean): void => {
         if(check) return
         setHover(ev)
     }
 
-    const toggleCheck = () => setCheck(!check)
+    const toggleCheck = (): void => setCheck(!check)
 
     return (
         <Row>
