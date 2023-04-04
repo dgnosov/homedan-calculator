@@ -14,23 +14,29 @@ interface ICalculatorResults {
     calculate_total: number
 }
 
-
 const CalculatorResults = ({toggler_ndfl, salary}: IResultsProps) => {
 
     const [calculateResults, setCalculateResults] = useState<ICalculatorResults>(null)
-    const mask = /(\d)(?=(\d\d\d)+([^\d]|$))/g
-    const toReplace = "$1 "
+    const salaryValue: number = Number(salary.toString().replace(/\s/g, ''))
+    const mask: RegExp = /(\d)(?=(\d\d\d)+([^\d]|$))/g
+    const toReplace: string = "$1 "
+    const percent: number = 100
+    const percentToCalculateNDFL: number = (percent - CalculatorSettings.calculatorNDFL) / percent // Формула для расчета НДФЛ
 
     useEffect(()=>{
 
-        const salaryValue = Number(salary.toString().replace(/\s/g, ''))
-        const ndfl = (salaryValue * CalculatorSettings.calculatorNDFL) / 100
-        const calculate_total = ndfl + Number(salaryValue)
+        const calculate_total = !toggler_ndfl
+            ? salaryValue * percentToCalculateNDFL
+            : salaryValue / percentToCalculateNDFL
+
+        const ndfl = !toggler_ndfl
+            ? salaryValue - calculate_total
+            : calculate_total - salaryValue
 
         const res = {
-            salary: toggler_ndfl ? salary : salaryValue - ndfl,
-            calculate_ndfl: ndfl,
-            calculate_total: toggler_ndfl ? calculate_total : calculate_total - ndfl
+            salary: salary,
+            calculate_ndfl: Math.round(ndfl),
+            calculate_total: Math.round(calculate_total)
         }
 
         setCalculateResults(res)
