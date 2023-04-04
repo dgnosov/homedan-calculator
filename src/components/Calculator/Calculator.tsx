@@ -18,8 +18,6 @@ const Calculator = () => {
                         calculator_radio_btn: CalculatorSettings.calculatorInputs[0].id,
                         toggler_ndfl: true }}
                     render={({values}) =>{
-
-                        console.log(values)
                         return <form>
                             <Row>
                                 <Col>
