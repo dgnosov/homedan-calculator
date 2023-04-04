@@ -26,16 +26,20 @@ const CalculatorResults = ({toggler_ndfl, salary}: IResultsProps) => {
     useEffect(()=>{
 
         const calculate_total = !toggler_ndfl
-            ? salaryValue * percentToCalculateNDFL
+            ? salaryValue
             : salaryValue / percentToCalculateNDFL
 
-        const ndfl = !toggler_ndfl
-            ? salaryValue - calculate_total
+        const calculate_ndfl = !toggler_ndfl
+            ? salaryValue - ( salaryValue * percentToCalculateNDFL )
             : calculate_total - salaryValue
 
+        const calculate_salary = !toggler_ndfl
+            ? salaryValue - calculate_ndfl
+            : salaryValue
+
         const res = {
-            salary: salary,
-            calculate_ndfl: Math.round(ndfl),
+            salary: Math.round(calculate_salary),
+            calculate_ndfl: Math.round(calculate_ndfl),
             calculate_total: Math.round(calculate_total)
         }
 
